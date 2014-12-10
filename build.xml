@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<project name="FTP website test" default="initialize">
+	<target name="initialize" depends="get_properties">
+		<echo>Done!</echo>
+	</target>
+	<target name="get_properties">
+		<property file="build.properties" />
+		<echo>Imported Properties</echo>
+	</target>
+	<target name="upload_files" depends="initialize">
+		<ftp server="54.172.5.103" userid="ubuntu" password="" port="21" remotedir="var/www" passive="yes" binary="no">
+			<fileset dir=".">
+				<include name="css/*" />
+				<include name="js/*" />
+				<include name="img/*" />
+				<include name="index.html" />
+			</fileset>
+		</ftp>
+	</target>
+</project>
